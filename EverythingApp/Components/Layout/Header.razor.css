@@ -1,0 +1,144 @@
+/* Header Navigation Component Styles */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    letter-spacing: -1px;
+}
+
+.logo a:hover {
+    color: #ff8800;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #ff8800;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff8800;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.shop-button {
+    background-color: #ff8800;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.shop-button:hover {
+    background-color: #e67e00;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 136, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .logo {
+        flex-basis: 100%;
+    }
+
+    .nav-links {
+        flex-basis: 100%;
+        gap: 10px;
+        font-size: 0.85rem;
+    }
+
+    .shop-button {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .logo a {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        gap: 5px;
+        font-size: 0.8rem;
+    }
+
+    .nav-links a {
+        padding: 5px;
+    }
+
+    .shop-button {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}

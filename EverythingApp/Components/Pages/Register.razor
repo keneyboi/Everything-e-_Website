@@ -1,0 +1,199 @@
+@page "/register"
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Register - EVERYTHING(e)</PageTitle>
+
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h1>Create Your Account</h1>
+            <p>Join the EVERYTHING(e) ecosystem</p>
+        </div>
+
+        <EditForm Model="registerModel" OnValidSubmit="HandleRegister">
+            <DataAnnotationsValidator />
+
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <InputText 
+                    id="firstName" 
+                    @bind-Value="registerModel.FirstName" 
+                    class="form-input" 
+                    placeholder="John"
+                    autocomplete="given-name" />
+                <ValidationMessage For="() => registerModel.FirstName" class="error-message" />
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <InputText 
+                    id="lastName" 
+                    @bind-Value="registerModel.LastName" 
+                    class="form-input" 
+                    placeholder="Doe"
+                    autocomplete="family-name" />
+                <ValidationMessage For="() => registerModel.LastName" class="error-message" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <InputText 
+                    id="email" 
+                    @bind-Value="registerModel.Email" 
+                    class="form-input" 
+                    placeholder="you@example.com"
+                    autocomplete="email" />
+                <ValidationMessage For="() => registerModel.Email" class="error-message" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <InputText 
+                    id="password" 
+                    @bind-Value="registerModel.Password" 
+                    type="password" 
+                    class="form-input" 
+                    placeholder="••••••••"
+                    autocomplete="new-password" />
+                <ValidationMessage For="() => registerModel.Password" class="error-message" />
+                <small class="password-hint">At least 8 characters with uppercase, lowercase, and numbers</small>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <InputText 
+                    id="confirmPassword" 
+                    @bind-Value="registerModel.ConfirmPassword" 
+                    type="password" 
+                    class="form-input" 
+                    placeholder="••••••••"
+                    autocomplete="new-password" />
+                <ValidationMessage For="() => registerModel.ConfirmPassword" class="error-message" />
+            </div>
+
+            <div class="form-group">
+                <InputCheckbox id="terms" @bind-Value="registerModel.AgreeToTerms" />
+                <label for="terms" class="terms-label">
+                    I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a>
+                </label>
+                <ValidationMessage For="() => registerModel.AgreeToTerms" class="error-message" />
+            </div>
+
+            <button type="submit" class="register-button">Create Account</button>
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-error">
+                    <span>@errorMessage</span>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(successMessage))
+            {
+                <div class="alert alert-success">
+                    <span>@successMessage</span>
+                </div>
+            }
+        </EditForm>
+
+        <div class="register-footer">
+            <p>Already have an account? <a href="/login" class="login-link">Sign in here</a></p>
+        </div>
+    </div>
+
+    <div class="register-side">
+        <div class="side-content">
+            <h2>Welcome to EVERYTHING(e)</h2>
+            <div class="benefits">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎯</span>
+                    <h3>Integrated Experience</h3>
+                    <p>All your devices work together seamlessly</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">✨</span>
+                    <h3>Premium Design</h3>
+                    <p>Transparent aesthetics with premium materials</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🚀</span>
+                    <h3>High Performance</h3>
+                    <p>Top-tier processors and technology</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🛡️</span>
+                    <h3>Secure & Private</h3>
+                    <p>Your data stays protected at all times</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private RegisterModel registerModel = new();
+    private string errorMessage = string.Empty;
+    private string successMessage = string.Empty;
+
+    private async Task HandleRegister()
+    {
+        errorMessage = string.Empty;
+        successMessage = string.Empty;
+
+        try
+        {
+            // Validation checks
+            if (registerModel.Password != registerModel.ConfirmPassword)
+            {
+                errorMessage = "Passwords do not match";
+                return;
+            }
+
+            if (!registerModel.AgreeToTerms)
+            {
+                errorMessage = "You must agree to the Terms of Service and Privacy Policy";
+                return;
+            }
+
+            // TODO: Replace with actual registration logic
+            if (registerModel.Email.Contains("@"))
+            {
+                successMessage = "Account created successfully! Redirecting to login...";
+                await Task.Delay(1500);
+                // Navigation.NavigateTo("/login");
+            }
+            else
+            {
+                errorMessage = "Please enter a valid email address";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    public class RegisterModel
+    {
+        [Required(ErrorMessage = "First name is required")]
+        public string FirstName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Last name is required")]
+        public string LastName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Please enter a valid email address")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Password is required")]
+        [StringLength(100, MinimumLength = 8, 
+            ErrorMessage = "Password must be at least 8 characters")]
+        public string Password { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Please confirm your password")]
+        public string ConfirmPassword { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "You must agree to the terms")]
+        public bool AgreeToTerms { get; set; } = false;
+    }
+}

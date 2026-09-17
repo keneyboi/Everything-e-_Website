@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\EverythingApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\EverythingApp.bundle.scp.css"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\css\\doto-font.css",
+      "PackagePath": "staticwebassets\\css\\doto-font.css"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\font\\Doto-VariableFont_ROND,wght.ttf",
+      "PackagePath": "staticwebassets\\font\\Doto-VariableFont_ROND,wght.ttf"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\images\\birds\\crow.png",
+      "PackagePath": "staticwebassets\\images\\birds\\crow.png"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\images\\birds\\dove.png",
+      "PackagePath": "staticwebassets\\images\\birds\\dove.png"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\images\\hero-phone.png",
+      "PackagePath": "staticwebassets\\images\\hero-phone.png"
+    },
+    {
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\images\\hero-section.png",
+      "PackagePath": "staticwebassets\\images\\hero-section.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EverythingApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EverythingApp.props",
+      "PackagePath": "build\\EverythingApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EverythingApp.props",
+      "PackagePath": "buildMultiTargeting\\EverythingApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EverythingApp.props",
+      "PackagePath": "buildTransitive\\EverythingApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

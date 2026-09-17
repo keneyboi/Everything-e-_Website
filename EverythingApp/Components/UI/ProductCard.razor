@@ -1,0 +1,24 @@
+<div class="product-card">
+    <span class="category">@Category</span>
+    <h3>@Title</h3>
+    <img src="@Image" alt="@Title" />
+    <ul class="specs-list">
+        @Details
+    </ul>
+    <button class="orange-button">EXPLORE @Title.ToUpper()</button>
+</div>
+
+@code {
+    [Parameter] 
+    public string Category { get; set; } = "CATEGORY";
+
+    [Parameter] 
+    public string Title { get; set; } = "Title";
+
+    [Parameter] 
+    public string Image { get; set; } = "/images/placeholder.png";
+
+    [Parameter] 
+    public RenderFragment? Details { get; set; }
+}
+
