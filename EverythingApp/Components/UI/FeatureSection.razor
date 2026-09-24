@@ -1,36 +1,47 @@
+<section class="border-t border-gray-200 bg-white py-14">
+    <div class="mx-auto max-w-7xl px-4">
+        <div class="mb-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+            @* TODO: drop the real product photo in at wwwroot/images/everybuds-case.png *@
+            <div class="flex h-28 w-28 items-center justify-center rounded-md bg-brand-gray text-[10px] text-gray-400 sm:h-32 sm:w-32">
+                everybuds-case.png
+            </div>
+            <h2 class="pixel-heading text-2xl">EVERYBUDS(e)</h2>
+        </div>
 
-<section class="feature-section">
-    <div class="buds-container">
-        <img src="/images/everybuds-case.png" class="buds-case" alt="EVERYBUDS" />
-        <h2>EVERYBUDS(e)</h2>
-    </div>
-    <div class="card-grid">
-        <ProductCard Category="FLAGSHIP SMARTPHONE" Title="Everything Phone (1)" Image="/images/phone-pcb.png">
-            <Details>
-                <li>Exterior Shell: <span>Sapphire Glass Backplate</span></li>
-                <li>Illumination: <span>Glyph Interface (Light Array)</span></li>
-                <li>Display Tech: <span>6.1" 120Hz LTPO OLED</span></li>
-                <li>Processor: <span>Snapdragon 8 Gen 3</span></li>
-                <li>Battery: <span>5000mAh with 45W Charging</span></li>
-            </Details>
-        </ProductCard>
-        <ProductCard Category="PREMIUM AUDIO" Title="Everything Buds (Pro)" Image="/images/buds-front.png">
-            <Details>
-                <li>Audio Quality: <span>High-Resolution Audio</span></li>
-                <li>Noise Cancellation: <span>Adaptive ANC 2.0</span></li>
-                <li>Battery Life: <span>12 Hours (Charging Case)</span></li>
-                <li>Connectivity: <span>Bluetooth 5.4 LE</span></li>
-                <li>Design: <span>Premium Titanium Build</span></li>
-            </Details>
-        </ProductCard>
-        <ProductCard Category="WEARABLE" Title="Everything Watch" Image="/images/watch-display.png">
-            <Details>
-                <li>Display: <span>2.1" AMOLED Always-On</span></li>
-                <li>Health Monitoring: <span>Advanced Bio Tracking</span></li>
-                <li>Battery: <span>7 Days Battery Life</span></li>
-                <li>Water Resistance: <span>5ATM Rating</span></li>
-                <li>Integration: <span>Seamless Ecosystem Sync</span></li>
-            </Details>
-        </ProductCard>
+        <h3 class="mb-6 text-center text-sm font-bold uppercase tracking-wide text-gray-500">
+            Browse More Products
+        </h3>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ProductCard Category="FLAGSHIP SMARTPHONE" Title="Everything Phone (1)" Image="">
+                <Details>
+                    <li class="flex justify-between gap-2"><span>Exterior Shell:</span><span class="font-medium text-brand-dark">Sapphire Glass Backplate</span></li>
+                    <li class="flex justify-between gap-2"><span>Illumination:</span><span class="font-medium text-brand-dark">Glyph Interface</span></li>
+                    <li class="flex justify-between gap-2"><span>Display:</span><span class="font-medium text-brand-dark">6.1" 120Hz LTPO OLED</span></li>
+                    <li class="flex justify-between gap-2"><span>Processor:</span><span class="font-medium text-brand-dark">Snapdragon 8 Gen 3</span></li>
+                    <li class="flex justify-between gap-2"><span>Battery:</span><span class="font-medium text-brand-dark">5000mAh, 45W</span></li>
+                </Details>
+            </ProductCard>
+
+            <ProductCard Category="PREMIUM AUDIO" Title="Everything Buds (Pro)" Image="">
+                <Details>
+                    <li class="flex justify-between gap-2"><span>Audio Quality:</span><span class="font-medium text-brand-dark">High-Resolution</span></li>
+                    <li class="flex justify-between gap-2"><span>Noise Cancellation:</span><span class="font-medium text-brand-dark">Adaptive ANC 2.0</span></li>
+                    <li class="flex justify-between gap-2"><span>Battery Life:</span><span class="font-medium text-brand-dark">12 Hours + Case</span></li>
+                    <li class="flex justify-between gap-2"><span>Connectivity:</span><span class="font-medium text-brand-dark">Bluetooth 5.4 LE</span></li>
+                    <li class="flex justify-between gap-2"><span>Build:</span><span class="font-medium text-brand-dark">Premium Titanium</span></li>
+                </Details>
+            </ProductCard>
+
+            <ProductCard Category="WEARABLE" Title="Everything Watch" Image="">
+                <Details>
+                    <li class="flex justify-between gap-2"><span>Display:</span><span class="font-medium text-brand-dark">2.1" AMOLED Always-On</span></li>
+                    <li class="flex justify-between gap-2"><span>Health:</span><span class="font-medium text-brand-dark">Advanced Bio Tracking</span></li>
+                    <li class="flex justify-between gap-2"><span>Battery:</span><span class="font-medium text-brand-dark">7 Days</span></li>
+                    <li class="flex justify-between gap-2"><span>Water Resistance:</span><span class="font-medium text-brand-dark">5ATM</span></li>
+                    <li class="flex justify-between gap-2"><span>Sync:</span><span class="font-medium text-brand-dark">Seamless Ecosystem</span></li>
+                </Details>
+            </ProductCard>
+        </div>
     </div>
 </section>

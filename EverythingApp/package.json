@@ -1,0 +1,12 @@
+{
+  "name": "everythingapp-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "watch:css": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/app.css --watch",
+    "build:css": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/app.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}

@@ -1,24 +1,12 @@
 {
   "Files": [
     {
-      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\EverythingApp.bundle.scp.css",
-      "PackagePath": "staticwebassets\\EverythingApp.bundle.scp.css"
-    },
-    {
       "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\bootstrap\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
-    },
-    {
-      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
-    },
-    {
-      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\css\\doto-font.css",
-      "PackagePath": "staticwebassets\\css\\doto-font.css"
+      "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\css\\input.css",
+      "PackagePath": "staticwebassets\\css\\input.css"
     },
     {
       "Id": "Z:\\L23Y16W24\\Everything(E)\\EverythingApp\\wwwroot\\favicon.png",

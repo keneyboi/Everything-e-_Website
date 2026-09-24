@@ -1,0 +1,57 @@
+<div class="bg-brand-orange px-4 py-2 text-center text-xs font-medium text-white">
+    <a href="/" class="underline">Shop online</a> for free delivery. Call us at 1-800-000-0000 or
+    <a href="/support" class="underline">visit support</a>.
+</div>
+
+<header class="sticky top-0 z-40 border-b border-gray-200 bg-white">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+        <a href="/" class="pixel-heading text-lg font-bold">EVERYTHING(e)</a>
+
+        <nav class="hidden items-center gap-8 text-sm font-semibold tracking-wide md:flex">
+            <NavLink href="/store" class="hover:text-brand-orange">STORE</NavLink>
+            <NavLink href="/phones" class="hover:text-brand-orange">PHONES</NavLink>
+            <NavLink href="/audio" class="hover:text-brand-orange">AUDIO</NavLink>
+            <NavLink href="/watches" class="hover:text-brand-orange">WATCHES</NavLink>
+            <NavLink href="/accessories" class="hover:text-brand-orange">ACCESSORIES</NavLink>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <NavLink href="/login" class="btn-primary hidden !px-5 !py-2 md:inline-flex">Shop</NavLink>
+
+            <!-- Mobile menu toggle: this is the "responsive when pressed" button -->
+            <button type="button"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 active:scale-90 transition md:hidden"
+                    @onclick="ToggleMobileMenu"
+                    aria-label="Toggle navigation menu">
+                @if (isMobileMenuOpen)
+                {
+                    <span>&#10005;</span>
+                }
+                else
+                {
+                    <span>&#9776;</span>
+                }
+            </button>
+        </div>
+    </div>
+
+    @if (isMobileMenuOpen)
+    {
+        <nav class="flex flex-col gap-1 border-t border-gray-200 bg-white px-4 py-3 text-sm font-semibold md:hidden">
+            <NavLink href="/store" class="rounded px-2 py-2 hover:bg-brand-gray" @onclick="CloseMobileMenu">STORE</NavLink>
+            <NavLink href="/phones" class="rounded px-2 py-2 hover:bg-brand-gray" @onclick="CloseMobileMenu">PHONES</NavLink>
+            <NavLink href="/audio" class="rounded px-2 py-2 hover:bg-brand-gray" @onclick="CloseMobileMenu">AUDIO</NavLink>
+            <NavLink href="/watches" class="rounded px-2 py-2 hover:bg-brand-gray" @onclick="CloseMobileMenu">WATCHES</NavLink>
+            <NavLink href="/accessories" class="rounded px-2 py-2 hover:bg-brand-gray" @onclick="CloseMobileMenu">ACCESSORIES</NavLink>
+            <NavLink href="/login" class="btn-primary mt-2 justify-center" @onclick="CloseMobileMenu">Shop</NavLink>
+        </nav>
+    }
+</header>
+
+@code {
+    private bool isMobileMenuOpen = false;
+
+    private void ToggleMobileMenu() => isMobileMenuOpen = !isMobileMenuOpen;
+
+    private void CloseMobileMenu() => isMobileMenuOpen = false;
+}

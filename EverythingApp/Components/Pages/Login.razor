@@ -1,90 +1,54 @@
 @page "/login"
 @using System.ComponentModel.DataAnnotations
+@inject NavigationManager Navigation
 
 <PageTitle>Login - EVERYTHING(e)</PageTitle>
 
-<div class="login-container">
-    <div class="login-card">
-        <div class="login-header">
-            <h1>Welcome Back</h1>
-            <p>Sign in to your EVERYTHING(e) account</p>
-        </div>
+<div class="flex min-h-[70vh] items-center justify-center bg-brand-gray px-4 py-16">
+    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-sm">
+        <h1 class="pixel-heading text-center text-2xl">LOGIN</h1>
+        <p class="mt-1 text-center text-sm text-gray-500">Enter login details to continue shopping</p>
 
-        <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+        <EditForm Model="loginModel" OnValidSubmit="HandleLogin" class="mt-8 space-y-5">
             <DataAnnotationsValidator />
 
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <InputText 
-                    id="email" 
-                    @bind-Value="loginModel.Email" 
-                    class="form-input" 
-                    placeholder="you@example.com"
-                    autocomplete="email" />
-                <ValidationMessage For="() => loginModel.Email" class="error-message" />
+            <div>
+                <InputText id="username"
+                           @bind-Value="loginModel.Username"
+                           class="input-field"
+                           placeholder="Enter Username"
+                           autocomplete="username" />
+                <ValidationMessage For="() => loginModel.Username" class="field-error" />
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <InputText 
-                    id="password" 
-                    @bind-Value="loginModel.Password" 
-                    type="password" 
-                    class="form-input" 
-                    placeholder="••••••••"
-                    autocomplete="current-password" />
-                <ValidationMessage For="() => loginModel.Password" class="error-message" />
+            <div>
+                <InputText id="password"
+                           @bind-Value="loginModel.Password"
+                           type="password"
+                           class="input-field"
+                           placeholder="Enter Password"
+                           autocomplete="current-password" />
+                <ValidationMessage For="() => loginModel.Password" class="field-error" />
             </div>
 
-            <div class="form-options">
-                <div class="remember-me">
-                    <InputCheckbox id="remember" @bind-Value="loginModel.RememberMe" />
-                    <label for="remember">Remember me</label>
-                </div>
-                <a href="/forgot-password" class="forgot-link">Forgot password?</a>
-            </div>
-
-            <button type="submit" class="login-button">Sign In</button>
+            <button type="submit" class="btn-primary w-full !py-3.5" disabled="@isSubmitting">
+                @(isSubmitting ? "LOGGING IN..." : "LOGIN")
+            </button>
 
             @if (!string.IsNullOrEmpty(errorMessage))
             {
-                <div class="alert alert-error">
-                    <span>@errorMessage</span>
-                </div>
+                <div class="rounded-md bg-red-50 px-4 py-2 text-sm text-red-600">@errorMessage</div>
             }
-
             @if (!string.IsNullOrEmpty(successMessage))
             {
-                <div class="alert alert-success">
-                    <span>@successMessage</span>
-                </div>
+                <div class="rounded-md bg-green-50 px-4 py-2 text-sm text-green-700">@successMessage</div>
             }
         </EditForm>
 
-        <div class="login-footer">
-            <p>Don't have an account? <a href="/register" class="signup-link">Sign up here</a></p>
-            <div class="social-login">
-                <button type="button" class="social-button google-button" title="Sign in with Google">
-                    <span>Sign in with Google</span>
-                </button>
-                <button type="button" class="social-button apple-button" title="Sign in with Apple">
-                    <span>Sign in with Apple</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="login-side">
-        <div class="side-content">
-            <h2>EVERYTHING(e)</h2>
-            <p>Premium Hardware Ecosystem</p>
-            <ul class="features-list">
-                <li>Seamlessly integrated devices</li>
-                <li>Premium transparent design</li>
-                <li>Exceptional performance</li>
-                <li>24/7 customer support</li>
-            </ul>
-        </div>
+        <p class="mt-6 text-center text-sm text-gray-500">
+            Don't have an account?
+            <NavLink href="/register" class="font-semibold text-brand-orange hover:underline">Register</NavLink>
+        </p>
     </div>
 </div>
 
@@ -92,44 +56,46 @@
     private LoginModel loginModel = new();
     private string errorMessage = string.Empty;
     private string successMessage = string.Empty;
+    private bool isSubmitting = false;
 
     private async Task HandleLogin()
     {
         errorMessage = string.Empty;
         successMessage = string.Empty;
+        isSubmitting = true;
 
         try
         {
-            // TODO: Replace with actual authentication logic
-            if (loginModel.Email == "demo@everything.com" && loginModel.Password == "demo123")
+            // TODO: replace with real authentication
+            await Task.Delay(600);
+            if (loginModel.Username == "demo" && loginModel.Password == "demo123")
             {
                 successMessage = "Login successful! Redirecting...";
-                // In a real application, you would authenticate and redirect to dashboard
-                await Task.Delay(1500);
-                // Navigation.NavigateTo("/dashboard");
+                await Task.Delay(800);
+                Navigation.NavigateTo("/");
             }
             else
             {
-                errorMessage = "Invalid email or password. Try demo@everything.com / demo123";
+                errorMessage = "Invalid username or password. Try demo / demo123";
             }
         }
         catch (Exception ex)
         {
             errorMessage = $"An error occurred: {ex.Message}";
         }
+        finally
+        {
+            isSubmitting = false;
+        }
     }
 
     public class LoginModel
     {
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Please enter a valid email address")]
-        public string Email { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Username is required")]
+        public string Username { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Password is required")]
-        [StringLength(100, MinimumLength = 6, 
-            ErrorMessage = "Password must be between 6 and 100 characters")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters")]
         public string Password { get; set; } = string.Empty;
-
-        public bool RememberMe { get; set; } = false;
     }
 }

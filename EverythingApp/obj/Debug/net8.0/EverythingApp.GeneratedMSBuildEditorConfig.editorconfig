@@ -22,12 +22,44 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Layout/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcRm9vdGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Layout/Header.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcSGVhZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/UI/FeatureSection.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVSVxGZWF0dXJlU2VjdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/UI/HeroSection.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVSVxIZXJvU2VjdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [Z:/L23Y16W24/Everything(E)/EverythingApp/Components/UI/ProductCard.razor]
@@ -37,35 +69,3 @@ build_metadata.AdditionalFiles.CssScope =
 [Z:/L23Y16W24/Everything(E)/EverythingApp/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Layout/Header.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcSGVhZGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-wjvvfb1hgo
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-dnetelcrdv
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-q192qodw5y
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-7p6lyl28rq
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Pages/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-st4541yjgt
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/Pages/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZWdpc3Rlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-c3wnwivz3p
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/UI/FeatureSection.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVSVxGZWF0dXJlU2VjdGlvbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-zvszp9hr9o
-
-[Z:/L23Y16W24/Everything(E)/EverythingApp/Components/UI/HeroSection.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVSVxIZXJvU2VjdGlvbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-ly9wkidqnm

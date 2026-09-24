@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Doto";
+  src: url("/font/Doto-VariableFont_ROND,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@layer base {
+  html,
+  body {
+    @apply font-sans text-brand-dark bg-white antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-black leading-tight;
+  }
+}
+
+@layer components {
+  /* Solid orange CTA button used everywhere: nav, hero, cards, forms */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-orange px-6 py-3
+           text-sm font-bold tracking-wide text-white shadow-sm transition
+           hover:bg-brand-orangeDark active:scale-95 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Outlined secondary button (e.g. "WATCH KEYNOTE") */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border-2 border-brand-dark px-6 py-3
+           text-sm font-bold tracking-wide text-brand-dark transition
+           hover:bg-brand-dark hover:text-white active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-brand-dark
+           placeholder:text-gray-400 focus:border-brand-orange focus:outline-none focus:ring-2
+           focus:ring-brand-orange/30;
+  }
+
+  .field-error {
+    @apply mt-1 block text-xs font-medium text-red-600;
+  }
+
+  .pixel-heading {
+    @apply font-pixel tracking-wider;
+  }
+}

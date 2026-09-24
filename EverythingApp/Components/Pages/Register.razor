@@ -1,132 +1,76 @@
 @page "/register"
 @using System.ComponentModel.DataAnnotations
+@inject NavigationManager Navigation
 
 <PageTitle>Register - EVERYTHING(e)</PageTitle>
 
-<div class="register-container">
-    <div class="register-card">
-        <div class="register-header">
-            <h1>Create Your Account</h1>
-            <p>Join the EVERYTHING(e) ecosystem</p>
-        </div>
+<div class="flex min-h-[70vh] items-center justify-center bg-brand-gray px-4 py-16">
+    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-sm">
+        <h1 class="pixel-heading text-center text-2xl">REGISTER</h1>
+        <p class="mt-1 text-center text-sm text-gray-500">Create an account to join EVERYTHING(e)</p>
 
-        <EditForm Model="registerModel" OnValidSubmit="HandleRegister">
+        <EditForm Model="registerModel" OnValidSubmit="HandleRegister" class="mt-8 space-y-5">
             <DataAnnotationsValidator />
 
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <InputText 
-                    id="firstName" 
-                    @bind-Value="registerModel.FirstName" 
-                    class="form-input" 
-                    placeholder="John"
-                    autocomplete="given-name" />
-                <ValidationMessage For="() => registerModel.FirstName" class="error-message" />
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <InputText @bind-Value="registerModel.FirstName" class="input-field" placeholder="First Name" autocomplete="given-name" />
+                    <ValidationMessage For="() => registerModel.FirstName" class="field-error" />
+                </div>
+                <div>
+                    <InputText @bind-Value="registerModel.LastName" class="input-field" placeholder="Last Name" autocomplete="family-name" />
+                    <ValidationMessage For="() => registerModel.LastName" class="field-error" />
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <InputText 
-                    id="lastName" 
-                    @bind-Value="registerModel.LastName" 
-                    class="form-input" 
-                    placeholder="Doe"
-                    autocomplete="family-name" />
-                <ValidationMessage For="() => registerModel.LastName" class="error-message" />
+            <div>
+                <InputText @bind-Value="registerModel.Username" class="input-field" placeholder="Enter Username" autocomplete="username" />
+                <ValidationMessage For="() => registerModel.Username" class="field-error" />
             </div>
 
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <InputText 
-                    id="email" 
-                    @bind-Value="registerModel.Email" 
-                    class="form-input" 
-                    placeholder="you@example.com"
-                    autocomplete="email" />
-                <ValidationMessage For="() => registerModel.Email" class="error-message" />
+            <div>
+                <InputText @bind-Value="registerModel.Email" class="input-field" placeholder="you@example.com" autocomplete="email" />
+                <ValidationMessage For="() => registerModel.Email" class="field-error" />
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <InputText 
-                    id="password" 
-                    @bind-Value="registerModel.Password" 
-                    type="password" 
-                    class="form-input" 
-                    placeholder="••••••••"
-                    autocomplete="new-password" />
-                <ValidationMessage For="() => registerModel.Password" class="error-message" />
-                <small class="password-hint">At least 8 characters with uppercase, lowercase, and numbers</small>
+            <div>
+                <InputText @bind-Value="registerModel.Password" type="password" class="input-field" placeholder="Enter Password" autocomplete="new-password" />
+                <ValidationMessage For="() => registerModel.Password" class="field-error" />
+                <p class="mt-1 text-xs text-gray-400">At least 8 characters, mixing upper, lower and numbers</p>
             </div>
 
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <InputText 
-                    id="confirmPassword" 
-                    @bind-Value="registerModel.ConfirmPassword" 
-                    type="password" 
-                    class="form-input" 
-                    placeholder="••••••••"
-                    autocomplete="new-password" />
-                <ValidationMessage For="() => registerModel.ConfirmPassword" class="error-message" />
+            <div>
+                <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="input-field" placeholder="Confirm Password" autocomplete="new-password" />
+                <ValidationMessage For="() => registerModel.ConfirmPassword" class="field-error" />
             </div>
 
-            <div class="form-group">
-                <InputCheckbox id="terms" @bind-Value="registerModel.AgreeToTerms" />
-                <label for="terms" class="terms-label">
-                    I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a>
-                </label>
-                <ValidationMessage For="() => registerModel.AgreeToTerms" class="error-message" />
-            </div>
+            <label class="flex items-start gap-2 text-xs text-gray-500">
+                <InputCheckbox @bind-Value="registerModel.AgreeToTerms" class="mt-0.5" />
+                <span>
+                    I agree to the <a href="#" class="text-brand-orange hover:underline">Terms of Service</a>
+                    and <a href="#" class="text-brand-orange hover:underline">Privacy Policy</a>
+                </span>
+            </label>
+            <ValidationMessage For="() => registerModel.AgreeToTerms" class="field-error" />
 
-            <button type="submit" class="register-button">Create Account</button>
+            <button type="submit" class="btn-primary w-full !py-3.5" disabled="@isSubmitting">
+                @(isSubmitting ? "CREATING ACCOUNT..." : "CREATE ACCOUNT")
+            </button>
 
             @if (!string.IsNullOrEmpty(errorMessage))
             {
-                <div class="alert alert-error">
-                    <span>@errorMessage</span>
-                </div>
+                <div class="rounded-md bg-red-50 px-4 py-2 text-sm text-red-600">@errorMessage</div>
             }
-
             @if (!string.IsNullOrEmpty(successMessage))
             {
-                <div class="alert alert-success">
-                    <span>@successMessage</span>
-                </div>
+                <div class="rounded-md bg-green-50 px-4 py-2 text-sm text-green-700">@successMessage</div>
             }
         </EditForm>
 
-        <div class="register-footer">
-            <p>Already have an account? <a href="/login" class="login-link">Sign in here</a></p>
-        </div>
-    </div>
-
-    <div class="register-side">
-        <div class="side-content">
-            <h2>Welcome to EVERYTHING(e)</h2>
-            <div class="benefits">
-                <div class="benefit-item">
-                    <span class="benefit-icon">🎯</span>
-                    <h3>Integrated Experience</h3>
-                    <p>All your devices work together seamlessly</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">✨</span>
-                    <h3>Premium Design</h3>
-                    <p>Transparent aesthetics with premium materials</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🚀</span>
-                    <h3>High Performance</h3>
-                    <p>Top-tier processors and technology</p>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🛡️</span>
-                    <h3>Secure & Private</h3>
-                    <p>Your data stays protected at all times</p>
-                </div>
-            </div>
-        </div>
+        <p class="mt-6 text-center text-sm text-gray-500">
+            Already have an account?
+            <NavLink href="/login" class="font-semibold text-brand-orange hover:underline">Sign in here</NavLink>
+        </p>
     </div>
 </div>
 
@@ -134,15 +78,16 @@
     private RegisterModel registerModel = new();
     private string errorMessage = string.Empty;
     private string successMessage = string.Empty;
+    private bool isSubmitting = false;
 
     private async Task HandleRegister()
     {
         errorMessage = string.Empty;
         successMessage = string.Empty;
+        isSubmitting = true;
 
         try
         {
-            // Validation checks
             if (registerModel.Password != registerModel.ConfirmPassword)
             {
                 errorMessage = "Passwords do not match";
@@ -155,21 +100,19 @@
                 return;
             }
 
-            // TODO: Replace with actual registration logic
-            if (registerModel.Email.Contains("@"))
-            {
-                successMessage = "Account created successfully! Redirecting to login...";
-                await Task.Delay(1500);
-                // Navigation.NavigateTo("/login");
-            }
-            else
-            {
-                errorMessage = "Please enter a valid email address";
-            }
+            // TODO: replace with real registration call
+            await Task.Delay(800);
+            successMessage = "Account created successfully! Redirecting to login...";
+            await Task.Delay(900);
+            Navigation.NavigateTo("/login");
         }
         catch (Exception ex)
         {
             errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isSubmitting = false;
         }
     }
 
@@ -181,19 +124,22 @@
         [Required(ErrorMessage = "Last name is required")]
         public string LastName { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "Username is required")]
+        public string Username { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Please enter a valid email address")]
         public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Password is required")]
-        [StringLength(100, MinimumLength = 8, 
-            ErrorMessage = "Password must be at least 8 characters")]
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "Password must be at least 8 characters")]
         public string Password { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please confirm your password")]
         public string ConfirmPassword { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "You must agree to the terms")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You must agree to the terms")]
         public bool AgreeToTerms { get; set; } = false;
     }
 }
