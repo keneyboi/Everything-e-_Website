@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'PixelMono';
+    src: url('../font/Doto-VariableFont_ROND,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.pixel-text {
+    font-family: 'PixelMono', monospace;
+    letter-spacing: 2px;
+}

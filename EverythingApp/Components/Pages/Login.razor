@@ -1,51 +1,57 @@
 @page "/login"
+
 @using System.ComponentModel.DataAnnotations
 @inject NavigationManager Navigation
 
 <PageTitle>Login - EVERYTHING(e)</PageTitle>
 
-<div class="flex min-h-[70vh] items-center justify-center bg-brand-gray px-4 py-16">
-    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-sm">
-        <h1 class="pixel-heading text-center text-2xl">LOGIN</h1>
-        <p class="mt-1 text-center text-sm text-gray-500">Enter login details to continue shopping</p>
+<!-- Outer Container: Centers content vertically/horizontally and scales padding based on breakpoint -->
+<div class="flex min-h-[calc(100vh-4rem)] w-full items-center justify-center bg-brand-gray px-4 py-8 sm:px-6 sm:py-12 md:py-16">
+    <!-- Card Container: Responsive width scaling from mobile (full width / max-w-sm) to desktop (max-w-md) -->
+    <div class="w-full max-w-sm sm:max-w-md rounded-lg bg-white p-6 shadow-sm sm:p-8">
+        
+        <!-- Header Text: Responsive sizing -->
+        <h1 class="pixel-heading text-center text-xl sm:text-2xl">LOGIN</h1>
+        <p class="mt-1.5 text-center text-xs text-gray-500 sm:text-sm">Enter login details to continue shopping</p>
 
-        <EditForm Model="loginModel" OnValidSubmit="HandleLogin" class="mt-8 space-y-5">
+        <!-- Form: Flexible vertical spacing -->
+        <EditForm Model="loginModel" OnValidSubmit="HandleLogin" class="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
             <DataAnnotationsValidator />
 
             <div>
                 <InputText id="username"
                            @bind-Value="loginModel.Username"
-                           class="input-field"
+                           class="input-field w-full text-sm sm:text-base"
                            placeholder="Enter Username"
                            autocomplete="username" />
-                <ValidationMessage For="() => loginModel.Username" class="field-error" />
+                <ValidationMessage For="() => loginModel.Username" class="field-error text-xs sm:text-sm" />
             </div>
 
             <div>
                 <InputText id="password"
                            @bind-Value="loginModel.Password"
                            type="password"
-                           class="input-field"
+                           class="input-field w-full text-sm sm:text-base"
                            placeholder="Enter Password"
                            autocomplete="current-password" />
-                <ValidationMessage For="() => loginModel.Password" class="field-error" />
+                <ValidationMessage For="() => loginModel.Password" class="field-error text-xs sm:text-sm" />
             </div>
 
-            <button type="submit" class="btn-primary w-full !py-3.5" disabled="@isSubmitting">
+            <button type="submit" class="btn-primary w-full !py-3 sm:!py-3.5 text-sm sm:text-base font-semibold" disabled="@isSubmitting">
                 @(isSubmitting ? "LOGGING IN..." : "LOGIN")
             </button>
 
             @if (!string.IsNullOrEmpty(errorMessage))
             {
-                <div class="rounded-md bg-red-50 px-4 py-2 text-sm text-red-600">@errorMessage</div>
+                <div class="rounded-md bg-red-50 px-3 py-2 text-xs sm:px-4 sm:text-sm text-red-600 break-words">@errorMessage</div>
             }
             @if (!string.IsNullOrEmpty(successMessage))
             {
-                <div class="rounded-md bg-green-50 px-4 py-2 text-sm text-green-700">@successMessage</div>
+                <div class="rounded-md bg-green-50 px-3 py-2 text-xs sm:px-4 sm:text-sm text-green-700 break-words">@successMessage</div>
             }
         </EditForm>
 
-        <p class="mt-6 text-center text-sm text-gray-500">
+        <p class="mt-5 text-center text-xs text-gray-500 sm:mt-6 sm:text-sm">
             Don't have an account?
             <NavLink href="/register" class="font-semibold text-brand-orange hover:underline">Register</NavLink>
         </p>

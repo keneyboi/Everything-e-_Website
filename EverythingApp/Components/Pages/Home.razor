@@ -1,85 +1,136 @@
 ﻿@page "/"
+@layout EverythingApp.Components.Layout.MainLayout
 
 <PageTitle>EVERYTHING(e) - Premium Hardware Ecosystem</PageTitle>
 
 <HeroSection />
 <FeatureSection />
 
-<section class="bg-brand-dark py-16 text-center text-white">
-    <div class="mx-auto max-w-2xl px-4">
-        <h2 class="text-2xl sm:text-3xl">Ready to Experience Everything?</h2>
-        <p class="mt-3 text-sm text-gray-300">
-            Join millions of users who have chosen the premium integrated ecosystem.
-        </p>
-        <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <NavLink href="/login" class="btn-primary" Match="NavLinkMatch.All">GET STARTED NOW</NavLink>
-            <button type="button" class="btn-secondary !border-white !text-white hover:!bg-white hover:!text-brand-dark">
-                LEARN MORE
-            </button>
-        </div>
-    </div>
-</section>
-
-<section class="bg-brand-gray py-16">
-    <div class="mx-auto max-w-6xl px-4">
-        <h2 class="mb-10 text-center text-2xl">What Our Customers Say</h2>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div class="rounded-lg bg-white p-6 shadow-sm">
-                <div class="text-brand-orange">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="mt-3 text-sm text-gray-600">
-                    "The integration between all devices is seamless. Everything just works perfectly together."
-                </p>
-                <p class="mt-4 text-xs font-semibold text-gray-500">- Sarah Chen, Tech Enthusiast</p>
-            </div>
-            <div class="rounded-lg bg-white p-6 shadow-sm">
-                <div class="text-brand-orange">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="mt-3 text-sm text-gray-600">
-                    "Premium quality at a fair price. The transparent design looks absolutely stunning."
-                </p>
-                <p class="mt-4 text-xs font-semibold text-gray-500">- Michael Rodriguez, Designer</p>
-            </div>
-            <div class="rounded-lg bg-white p-6 shadow-sm">
-                <div class="text-brand-orange">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="mt-3 text-sm text-gray-600">
-                    "Best ecosystem I've ever experienced. Worth every penny!"
-                </p>
-                <p class="mt-4 text-xs font-semibold text-gray-500">- Emma Thompson, Developer</p>
+<!-- Call to Action Section -->
+<section class="my-16 px-4">
+    <div class="max-w-5xl mx-auto bg-gradient-to-r from-indigo-950/60 via-slate-900 to-indigo-950/60 border border-slate-800 rounded-2xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden">
+        <div class="relative z-10 space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Ready to Experience Everything?
+            </h2>
+            <p class="text-slate-300 max-w-xl mx-auto text-base sm:text-lg">
+                Join millions of users who have chosen the premium integrated ecosystem.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                <NavLink href="/login" Match="NavLinkMatch.All" class="w-full sm:w-auto px-6 py-3.5 bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold rounded-xl text-xs tracking-wider uppercase transition shadow-lg shadow-orange-500/20 active:scale-95">
+                    GET STARTED NOW
+                </NavLink>
+                <button class="w-full sm:w-auto px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl text-xs tracking-wider uppercase border border-slate-700 transition active:scale-95">
+                    LEARN MORE
+                </button>
             </div>
         </div>
     </div>
 </section>
 
-<section class="bg-brand-orange py-14 text-center text-white">
-    <div class="mx-auto max-w-xl px-4">
-        <h2 class="text-2xl">Stay Updated</h2>
-        <p class="mt-2 text-sm text-white/90">Get the latest news about new releases and exclusive offers.</p>
-        <form class="mt-6 flex flex-col gap-3 sm:flex-row" @onsubmit="HandleNewsletterSubmit" @onsubmit:preventDefault="true">
-            <input type="email" placeholder="Enter your email" required
-                   @bind="newsletterEmail"
-                   class="input-field flex-1 !border-white/40" />
-            <button type="submit" class="btn-primary !bg-brand-dark hover:!bg-black" disabled="@isSubscribing">
-                @(isSubscribing ? "SUBSCRIBING..." : "SUBSCRIBE")
+<!-- Testimonials Section -->
+<section class="py-16 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-center text-white tracking-tight">
+            What Our Customers Say
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 shadow-lg hover:border-slate-700 transition">
+                <div class="space-y-3">
+                    <div class="text-amber-400 tracking-widest text-sm">★★★★★</div>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        "The integration between all devices is seamless. Everything just works perfectly together."
+                    </p>
+                </div>
+                <p class="text-xs font-semibold text-indigo-400">- Sarah Chen, Tech Enthusiast</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 shadow-lg hover:border-slate-700 transition">
+                <div class="space-y-3">
+                    <div class="text-amber-400 tracking-widest text-sm">★★★★★</div>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        "Premium quality at a fair price. The transparent design looks absolutely stunning."
+                    </p>
+                </div>
+                <p class="text-xs font-semibold text-indigo-400">- Michael Rodriguez, Designer</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 shadow-lg hover:border-slate-700 transition">
+                <div class="space-y-3">
+                    <div class="text-amber-400 tracking-widest text-sm">★★★★★</div>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        "Best ecosystem I've ever experienced. Worth every penny!"
+                    </p>
+                </div>
+                <p class="text-xs font-semibold text-indigo-400">- Emma Thompson, Developer</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-16 bg-slate-900/40 border-y border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 text-center space-y-6">
+        <div class="space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Stay Updated</h2>
+            <p class="text-slate-400 text-sm">Get the latest news about new releases and exclusive offers.</p>
+        </div>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input type="email" placeholder="Enter your email" required class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
+            <button type="submit" class="px-6 py-3 bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold rounded-xl text-xs tracking-wider uppercase transition shadow-md shadow-orange-500/20 active:scale-95">
+                SUBSCRIBE
             </button>
         </form>
-        @if (!string.IsNullOrEmpty(newsletterMessage))
-        {
-            <p class="mt-3 text-sm font-medium">@newsletterMessage</p>
-        }
     </div>
 </section>
 
-@code {
-    private string newsletterEmail = string.Empty;
-    private bool isSubscribing = false;
-    private string newsletterMessage = string.Empty;
+<!-- Footer -->
+<footer class="bg-slate-950 border-t border-slate-800 text-slate-400 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-4">About EVERYTHING(e)</h3>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" class="hover:text-indigo-400 transition">Company</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Careers</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Blog</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Products</h3>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" class="hover:text-indigo-400 transition">Phones</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Buds</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Watches</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Accessories</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Support</h3>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" class="hover:text-indigo-400 transition">Help Center</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Warranty</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Returns</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Legal</h3>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Cookie Policy</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
 
-    private async Task HandleNewsletterSubmit()
-    {
-        isSubscribing = true;
-        newsletterMessage = string.Empty;
-        await Task.Delay(800);
-        newsletterMessage = $"Thanks! We'll send updates to {newsletterEmail}.";
-        newsletterEmail = string.Empty;
-        isSubscribing = false;
-    }
-}
+        <div class="pt-8 border-t border-slate-900 text-center text-xs text-slate-500">
+            <p>&copy; 2026 EVERYTHING(e). All rights reserved.</p>
+        </div>
+    </div>
+</footer>
