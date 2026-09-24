@@ -4,70 +4,78 @@
 
 <PageTitle>Register - EVERYTHING(e)</PageTitle>
 
-<div class="flex min-h-[70vh] items-center justify-center bg-brand-gray px-4 py-16">
-    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-sm">
-        <h1 class="pixel-heading text-center text-2xl">REGISTER</h1>
-        <p class="mt-1 text-center text-sm text-gray-500">Create an account to join EVERYTHING(e)</p>
+<!-- Outer Container: Uses calc height for centering and responsive padding -->
+<div class="flex min-h-[calc(100vh-4rem)] w-full items-center justify-center bg-brand-gray px-4 py-8 sm:px-6 sm:py-12 md:py-16">
+    <!-- Card Container: Responsive width and padding scaling -->
+    <div class="w-full max-w-sm sm:max-w-md rounded-lg bg-white p-6 shadow-sm sm:p-8">
+        
+        <!-- Header Text: Scalable font sizes -->
+        <h1 class="pixel-heading text-center text-xl sm:text-2xl">REGISTER</h1>
+        <p class="mt-1.5 text-center text-xs text-gray-500 sm:text-sm">Create an account to join EVERYTHING(e)</p>
 
-        <EditForm Model="registerModel" OnValidSubmit="HandleRegister" class="mt-8 space-y-5">
+        <!-- Form: Scalable spacing -->
+        <EditForm Model="registerModel" OnValidSubmit="HandleRegister" class="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
             <DataAnnotationsValidator />
 
-            <div class="grid grid-cols-2 gap-3">
+            <!-- First Name & Last Name: Stacks on tiny screens (grid-cols-1) and splits on larger screens (sm:grid-cols-2) -->
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                    <InputText @bind-Value="registerModel.FirstName" class="input-field" placeholder="First Name" autocomplete="given-name" />
-                    <ValidationMessage For="() => registerModel.FirstName" class="field-error" />
+                    <InputText @bind-Value="registerModel.FirstName" class="input-field w-full text-sm sm:text-base" placeholder="First Name" autocomplete="given-name" />
+                    <ValidationMessage For="() => registerModel.FirstName" class="field-error text-xs sm:text-sm" />
                 </div>
                 <div>
-                    <InputText @bind-Value="registerModel.LastName" class="input-field" placeholder="Last Name" autocomplete="family-name" />
-                    <ValidationMessage For="() => registerModel.LastName" class="field-error" />
+                    <InputText @bind-Value="registerModel.LastName" class="input-field w-full text-sm sm:text-base" placeholder="Last Name" autocomplete="family-name" />
+                    <ValidationMessage For="() => registerModel.LastName" class="field-error text-xs sm:text-sm" />
                 </div>
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.Username" class="input-field" placeholder="Enter Username" autocomplete="username" />
-                <ValidationMessage For="() => registerModel.Username" class="field-error" />
+                <InputText @bind-Value="registerModel.Username" class="input-field w-full text-sm sm:text-base" placeholder="Enter Username" autocomplete="username" />
+                <ValidationMessage For="() => registerModel.Username" class="field-error text-xs sm:text-sm" />
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.Email" class="input-field" placeholder="you@example.com" autocomplete="email" />
-                <ValidationMessage For="() => registerModel.Email" class="field-error" />
+                <InputText @bind-Value="registerModel.Email" class="input-field w-full text-sm sm:text-base" placeholder="you@example.com" autocomplete="email" />
+                <ValidationMessage For="() => registerModel.Email" class="field-error text-xs sm:text-sm" />
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.Password" type="password" class="input-field" placeholder="Enter Password" autocomplete="new-password" />
-                <ValidationMessage For="() => registerModel.Password" class="field-error" />
-                <p class="mt-1 text-xs text-gray-400">At least 8 characters, mixing upper, lower and numbers</p>
+                <InputText @bind-Value="registerModel.Password" type="password" class="input-field w-full text-sm sm:text-base" placeholder="Enter Password" autocomplete="new-password" />
+                <ValidationMessage For="() => registerModel.Password" class="field-error text-xs sm:text-sm" />
+                <p class="mt-1 text-[11px] text-gray-400 sm:text-xs">At least 8 characters, mixing upper, lower and numbers</p>
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="input-field" placeholder="Confirm Password" autocomplete="new-password" />
-                <ValidationMessage For="() => registerModel.ConfirmPassword" class="field-error" />
+                <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="input-field w-full text-sm sm:text-base" placeholder="Confirm Password" autocomplete="new-password" />
+                <ValidationMessage For="() => registerModel.ConfirmPassword" class="field-error text-xs sm:text-sm" />
             </div>
 
-            <label class="flex items-start gap-2 text-xs text-gray-500">
-                <InputCheckbox @bind-Value="registerModel.AgreeToTerms" class="mt-0.5" />
-                <span>
-                    I agree to the <a href="#" class="text-brand-orange hover:underline">Terms of Service</a>
-                    and <a href="#" class="text-brand-orange hover:underline">Privacy Policy</a>
-                </span>
-            </label>
-            <ValidationMessage For="() => registerModel.AgreeToTerms" class="field-error" />
+            <div class="space-y-1">
+                <label class="flex items-start gap-2 text-xs text-gray-500 sm:text-sm">
+                    <InputCheckbox @bind-Value="registerModel.AgreeToTerms" class="mt-0.5" />
+                    <span>
+                        I agree to the <a href="#" class="text-brand-orange hover:underline">Terms of Service</a>
+                        and <a href="#" class="text-brand-orange hover:underline">Privacy Policy</a>
+                    </span>
+                </label>
+                <ValidationMessage For="() => registerModel.AgreeToTerms" class="field-error text-xs sm:text-sm" />
+            </div>
 
-            <button type="submit" class="btn-primary w-full !py-3.5" disabled="@isSubmitting">
+            <button type="submit" class="btn-primary w-full !py-3 sm:!py-3.5 text-sm sm:text-base font-semibold" disabled="@isSubmitting">
                 @(isSubmitting ? "CREATING ACCOUNT..." : "CREATE ACCOUNT")
             </button>
 
             @if (!string.IsNullOrEmpty(errorMessage))
             {
-                <div class="rounded-md bg-red-50 px-4 py-2 text-sm text-red-600">@errorMessage</div>
+                <div class="rounded-md bg-red-50 px-3 py-2 text-xs sm:px-4 sm:text-sm text-red-600 break-words">@errorMessage</div>
             }
             @if (!string.IsNullOrEmpty(successMessage))
             {
-                <div class="rounded-md bg-green-50 px-4 py-2 text-sm text-green-700">@successMessage</div>
+                <div class="rounded-md bg-green-50 px-3 py-2 text-xs sm:px-4 sm:text-sm text-green-700 break-words">@successMessage</div>
             }
         </EditForm>
 
-        <p class="mt-6 text-center text-sm text-gray-500">
+        <p class="mt-5 text-center text-xs text-gray-500 sm:mt-6 sm:text-sm">
             Already have an account?
             <NavLink href="/login" class="font-semibold text-brand-orange hover:underline">Sign in here</NavLink>
         </p>
