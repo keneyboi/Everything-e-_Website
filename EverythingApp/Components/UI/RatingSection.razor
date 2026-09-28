@@ -1,0 +1,163 @@
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Web
+@rendermode InteractiveServer
+
+<section class="mx-auto max-w-2xl border-t border-gray-200 bg-white py-16 px-4">
+    <div class="mx-auto max-w-5xl">
+        
+        <!-- Header -->
+        <div class="mb-10 text-center">
+            <h2 class="pixel-heading text-2xl font-bold uppercase tracking-tight text-brand-dark sm:text-3xl">
+                Community Feedback
+            </h2>
+            <p class="mt-2 text-xs font-medium text-gray-500 sm:text-sm">
+                Share your experience with the Everything ecosystem
+            </p>
+        </div>
+
+<!-- Submit Review Form Container -->
+<div class="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm mb-12">
+    <h3 class="mb-6 text-xs font-bold uppercase tracking-wider text-brand-dark">
+        Leave a Review
+    </h3>
+
+    <EditForm Model="@newReview" FormName="CustomerReviewForm" OnValidSubmit="HandleSubmitReview">
+        <DataAnnotationsValidator />
+
+        <div class="flex flex-col gap-5">
+            <!-- Rating Picker -->
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[11px] font-bold uppercase tracking-wider text-gray-500">
+                    Rating
+                </label>
+                <div class="flex items-center gap-1.5 text-xl">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        int starValue = i;
+                        <button type="button" 
+                                @onclick="() => SelectRating(starValue)"
+                                class="transition-transform hover:scale-110 focus:outline-none">
+                            <span class="@(starValue <= newReview.Rating ? "!text-yellow-500" : "!text-gray-300")">★</span>
+                        </button>
+                    }
+                </div>
+            </div>
+
+            <!-- User Info Inputs Grid -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div class="flex flex-col gap-1">
+                    <input @bind-value="newReview.Author" 
+                           placeholder="Your Name" 
+                           class="!w-full !rounded-xl !border !border-gray-300 !bg-white !px-4 !py-3 !text-xs !font-medium !text-black placeholder-gray-400 focus:!border-black focus:!outline-none transition" />
+                    <ValidationMessage For="@(() => newReview.Author)" class="text-[10px] text-red-500" />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <input @bind-value="newReview.Role" 
+                           placeholder="Role/Title (e.g., Designer, Creator)" 
+                           class="!w-full !rounded-xl !border !border-gray-300 !bg-white !px-4 !py-3 !text-xs !font-medium !text-black placeholder-gray-400 focus:!border-black focus:!outline-none transition" />
+                </div>
+            </div>
+
+            <!-- Comment Textarea -->
+            <div class="flex flex-col gap-1">
+                <textarea @bind="newReview.Comment" 
+                          rows="3" 
+                          placeholder="Write your review..." 
+                          class="!w-full !rounded-xl !border !border-gray-300 !bg-white !px-4 !py-3 !text-xs !font-medium !text-black placeholder-gray-400 focus:!border-black focus:!outline-none transition"></textarea>
+                <ValidationMessage For="@(() => newReview.Comment)" class="text-[10px] text-red-500" />
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end pt-2">
+                <button type="submit" 
+                        class="btn-primary inline-flex items-center justify-center !rounded-xl !px-8 !py-3 text-xs font-bold uppercase tracking-wider active:scale-95">
+                    POST REVIEW
+                </button>
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+        <!-- Reviews Grid -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            @foreach (var review in reviews)
+            {
+                <div class="flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                    <div>
+                        <div class="mb-4 text-sm text-yellow-500">
+                            @for (int i = 0; i < review.Rating; i++)
+                            {
+                                <span>★</span>
+                            }
+                        </div>
+                        <p class="mb-6 text-sm font-medium leading-relaxed text-gray-800">
+                            "@review.Comment"
+                        </p>
+                    </div>
+                    <p class="text-xs font-bold tracking-wide text-black">
+                        — @review.Author @if (!string.IsNullOrWhiteSpace(review.Role)) { <span class="font-normal text-gray-500">, @review.Role</span> }
+                    </p>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+
+@code {
+    [SupplyParameterFromForm]
+    private ReviewModel newReview { get; set; } = new() { Rating = 5 };
+
+    // Static list ensures appended comments persist across form posts during the session
+    private static List<ReviewModel> reviews = new()
+    {
+        new ReviewModel 
+        { 
+            Author = "Sarah Chen", 
+            Role = "Tech Enthusiast", 
+            Rating = 5, 
+            Comment = "The integration between all devices is seamless. Everything just works perfectly together." 
+        },
+        new ReviewModel 
+        { 
+            Author = "Michael Rodriguez", 
+            Role = "Designer", 
+            Rating = 5, 
+            Comment = "Premium quality at a fair price. The transparent design looks absolutely stunning." 
+        }
+    };
+
+    private void SelectRating(int value)
+    {
+        newReview.Rating = value;
+    }
+
+    private void HandleSubmitReview()
+    {
+        reviews.Add(new ReviewModel
+        {
+            Author = newReview.Author,
+            Role = newReview.Role,
+            Rating = newReview.Rating,
+            Comment = newReview.Comment
+        });
+
+        // Reset inputs
+        newReview = new ReviewModel { Rating = 5 };
+    }
+
+    public class ReviewModel
+    {
+        [Required(ErrorMessage = "Name is required")]
+        public string Author { get; set; } = string.Empty;
+
+        public string Role { get; set; } = string.Empty;
+
+        [Range(1, 5)]
+        public int Rating { get; set; } = 5;
+
+        [Required(ErrorMessage = "Please enter a comment")]
+        public string Comment { get; set; } = string.Empty;
+    }
+}

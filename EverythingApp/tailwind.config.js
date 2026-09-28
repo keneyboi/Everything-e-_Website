@@ -1,23 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // IMPORTANT: this must cover every folder that contains .razor files,
-  // or Tailwind will "tree-shake" away classes you used and your new
-  // markup will render unstyled (another common cause of "it looks like
-  // nothing changed").
   content: [
-    "./Components/**/*.razor",
-    "./Components/**/*.razor.cs",
-    "./wwwroot/**/*.html",
+    "./**/*.razor",
+    "./**/*.html",
+    "./**/*.cshtml",
+    "!./node_modules/**",
+    "!./bin/**",
+    "!./obj/**"
   ],
   theme: {
     extend: {
       colors: {
-        brand: {
-          orange: "#ff8800",
-          orangeDark: "#e67e00",
-          dark: "#141414",
-          gray: "#f5f5f5",
-        },
+        'brand-orange': '#ff8800',
+        'brand-orangeDark': '#e67e00',
+        'brand-dark': '#141414',
+        'brand-gray': '#f5f5f5',
       },
       fontFamily: {
         pixel: ["Doto", "monospace"],

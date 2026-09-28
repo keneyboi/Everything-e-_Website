@@ -1,15 +1,19 @@
-﻿<!-- STREAMING_CHUNK:Updating MainLayout razor markup... -->
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
+@using EverythingApp.Components
+@using EverythingApp.Components.Layout
 
-<div class="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+<div class="min-h-screen bg-white text-black flex flex-col">
 
-    <!-- 1. HERE IS WHERE YOU CALL YOUR NAVBAR COMPONENT -->
-    <NavMenu />
+    <!-- 1. NAVBAR (Extends full-width) -->
+    <Header />
 
-    <!-- 2. MAIN CONTENT AREA WHERE @Body RENDERS YOUR PAGES -->
-    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+    <!-- 2. MAIN CONTENT (Constrained page content only) -->
+    <main class="flex-1 w-full">
         @Body
     </main>
+
+    <!-- 3. FOOTER (Extends full-width) -->
+    <Footer />
 
 </div>
 

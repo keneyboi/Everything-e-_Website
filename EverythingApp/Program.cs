@@ -22,7 +22,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection(); // Only force HTTPS in Production
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
