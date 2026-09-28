@@ -1,7 +1,28 @@
+# Build & Output Directories
 bin/
 obj/
 **/bin/
 **/obj/
 node_modules/
+
+# IDE & User-specific files
 .vs/
+.vscode/
+.idea/
 *.user
+*.suo
+*.userprefs
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+
+# Secrets & Local Environment Configs
+appsettings.Development.json
+appsettings.Local.json
+.env
+.env.*
+
+# Logs & Debugging
+*.log
+npm-debug.log*
