@@ -1,18 +1,16 @@
 ﻿@inherits LayoutComponentBase
-@using EverythingApp.Components
 @using EverythingApp.Components.Layout
 
 <div class="min-h-screen bg-white text-black flex flex-col">
 
-    <!-- 1. NAVBAR (Extends full-width) -->
     <Header />
 
     <!-- 2. MAIN CONTENT (Constrained page content only) -->
-    <main class="flex-1 w-full">
+    <main class="flex-1 w-full bg-[url(/images/bg.png)] bg-center">
         @Body
     </main>
 
-    <!-- 3. FOOTER (Extends full-width) -->
+
     <Footer />
 
 </div>

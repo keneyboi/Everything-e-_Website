@@ -1,9 +1,10 @@
 # Build & Output Directories
 bin/
 obj/
+node_modules/
 **/bin/
 **/obj/
-node_modules/
+**/node_modules/
 
 # IDE & User-specific files
 .vs/

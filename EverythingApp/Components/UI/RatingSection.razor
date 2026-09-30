@@ -2,46 +2,47 @@
 @using Microsoft.AspNetCore.Components.Web
 @rendermode InteractiveServer
 
-<section class="mx-auto max-w-2xl border-t border-gray-200 bg-white py-16 px-4">
+<section class="mx-auto max-w-2xl border-gray-200 py-20 px-4">
     <div class="mx-auto max-w-5xl">
         
         <!-- Header -->
         <div class="mb-10 text-center">
-            <h2 class="pixel-heading text-2xl font-bold uppercase tracking-tight text-brand-dark sm:text-3xl">
+            <h2 class="serif-text text-2xl  text-gray-600 sm:text-3xl">
                 Community Feedback
             </h2>
-            <p class="mt-2 text-xs font-medium text-gray-500 sm:text-sm">
+            <p class="mt-2 text-xs font-light text-gray-600 sm:text-sm">
                 Share your experience with the Everything ecosystem
             </p>
         </div>
 
 <!-- Submit Review Form Container -->
 <div class="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm mb-12">
-    <h3 class="mb-6 text-xs font-bold uppercase tracking-wider text-brand-dark">
-        Leave a Review
-    </h3>
+
 
     <EditForm Model="@newReview" FormName="CustomerReviewForm" OnValidSubmit="HandleSubmitReview">
         <DataAnnotationsValidator />
 
         <div class="flex flex-col gap-5">
             <!-- Rating Picker -->
-            <div class="flex flex-col gap-1.5">
-                <label class="text-[11px] font-bold uppercase tracking-wider text-gray-500">
-                    Rating
-                </label>
-                <div class="flex items-center gap-1.5 text-xl">
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        int starValue = i;
-                        <button type="button" 
-                                @onclick="() => SelectRating(starValue)"
-                                class="transition-transform hover:scale-110 focus:outline-none">
-                            <span class="@(starValue <= newReview.Rating ? "!text-yellow-500" : "!text-gray-300")">★</span>
-                        </button>
-                    }
+            <div class="flex items-center">
+                <h3 class="pixel-text text-xs font-bold uppercase tracking-wider text-gray-800 mr-auto">
+                  Leave a Review
+                </h3>
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center gap-1.5 text-xl">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            int starValue = i;
+                            <button type="button" 
+                                    @onclick="() => SelectRating(starValue)"
+                                    class="transition-transform hover:scale-110 focus:outline-none">
+                                <span class="@(starValue <= newReview.Rating ? "!text-yellow-500" : "!text-gray-300")">★</span>
+                            </button>
+                        }
+                    </div>
                 </div>
             </div>
+            
 
             <!-- User Info Inputs Grid -->
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -71,7 +72,7 @@
             <!-- Submit Button -->
             <div class="flex justify-end pt-2">
                 <button type="submit" 
-                        class="btn-primary inline-flex items-center justify-center !rounded-xl !px-8 !py-3 text-xs font-bold uppercase tracking-wider active:scale-95">
+                        class="bg-black text-white inline-flex items-center justify-center !rounded-xl !px-8 !py-3 text-xs font-bold uppercase tracking-wider active:scale-95">
                     POST REVIEW
                 </button>
             </div>
