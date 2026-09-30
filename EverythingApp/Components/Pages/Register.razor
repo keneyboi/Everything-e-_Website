@@ -7,11 +7,11 @@
 <!-- Outer Container: Uses calc height for centering and responsive padding -->
 <div class="flex min-h-[calc(100vh-4rem)] w-full items-center justify-center bg-brand-gray px-4 py-8 sm:px-6 sm:py-12 md:py-16">
     <!-- Card Container: Responsive width and padding scaling -->
-    <div class="w-full max-w-sm sm:max-w-md rounded-lg bg-white p-6 shadow-sm sm:p-8">
+    <div class="w-full max-w-sm sm:max-w-md rounded-lg  py-12 px-8 shadow-sm bg-gray-100/70 backdrop-blur-md">
         
         <!-- Header Text: Scalable font sizes -->
-        <h1 class="pixel-heading text-center text-xl sm:text-2xl">REGISTER</h1>
-        <p class="mt-1.5 text-center text-xs text-gray-500 sm:text-sm">Create an account to join EVERYTHING(e)</p>
+        <h1 class="serif-text text-4xl">REGISTER</h1>
+        <p class="mt-1.5 text-xs text-gray-500">Create an account to join EVERYTHING(e)</p>
 
         <!-- Form: Scalable spacing -->
         <EditForm Model="registerModel" OnValidSubmit="HandleRegister" class="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
@@ -20,33 +20,33 @@
             <!-- First Name & Last Name: Stacks on tiny screens (grid-cols-1) and splits on larger screens (sm:grid-cols-2) -->
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                    <InputText @bind-Value="registerModel.FirstName" class="input-field w-full text-sm sm:text-base" placeholder="First Name" autocomplete="given-name" />
+                    <InputText @bind-Value="registerModel.FirstName" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-black placeholder-gray-400 focus:border-black focus:outline-none" placeholder="First Name" autocomplete="given-name" />
                     <ValidationMessage For="() => registerModel.FirstName" class="field-error text-xs sm:text-sm" />
                 </div>
                 <div>
-                    <InputText @bind-Value="registerModel.LastName" class="input-field w-full text-sm sm:text-base" placeholder="Last Name" autocomplete="family-name" />
+                    <InputText @bind-Value="registerModel.LastName" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-black placeholder-gray-400 focus:border-black focus:outline-none" placeholder="Last Name" autocomplete="family-name" />
                     <ValidationMessage For="() => registerModel.LastName" class="field-error text-xs sm:text-sm" />
                 </div>
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.Username" class="input-field w-full text-sm sm:text-base" placeholder="Enter Username" autocomplete="username" />
+                <InputText @bind-Value="registerModel.Username" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-black placeholder-gray-400 focus:border-black focus:outline-none" placeholder="Enter Username" autocomplete="username" />
                 <ValidationMessage For="() => registerModel.Username" class="field-error text-xs sm:text-sm" />
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.Email" class="input-field w-full text-sm sm:text-base" placeholder="you@example.com" autocomplete="email" />
+                <InputText @bind-Value="registerModel.Email" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-black placeholder-gray-400 focus:border-black focus:outline-none" placeholder="you@example.com" autocomplete="email" />
                 <ValidationMessage For="() => registerModel.Email" class="field-error text-xs sm:text-sm" />
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.Password" type="password" class="input-field w-full text-sm sm:text-base" placeholder="Enter Password" autocomplete="new-password" />
+                <InputText @bind-Value="registerModel.Password" type="password" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-black placeholder-gray-400 focus:border-black focus:outline-none" placeholder="Enter Password" autocomplete="new-password" />
                 <ValidationMessage For="() => registerModel.Password" class="field-error text-xs sm:text-sm" />
                 <p class="mt-1 text-[11px] text-gray-400 sm:text-xs">At least 8 characters, mixing upper, lower and numbers</p>
             </div>
 
             <div>
-                <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="input-field w-full text-sm sm:text-base" placeholder="Confirm Password" autocomplete="new-password" />
+                <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-black placeholder-gray-400 focus:border-black focus:outline-none" placeholder="Confirm Password" autocomplete="new-password" />
                 <ValidationMessage For="() => registerModel.ConfirmPassword" class="field-error text-xs sm:text-sm" />
             </div>
 
@@ -61,7 +61,7 @@
                 <ValidationMessage For="() => registerModel.AgreeToTerms" class="field-error text-xs sm:text-sm" />
             </div>
 
-            <button type="submit" class="btn-primary w-full !py-3 sm:!py-3.5 text-sm sm:text-base font-semibold" disabled="@isSubmitting">
+            <button type="submit" class="bg-orange-600 text-white rounded-xl mt-7 w-full !py-3 sm:!py-3.5 text-sm sm:text-base font-semibold">
                 @(isSubmitting ? "CREATING ACCOUNT..." : "CREATE ACCOUNT")
             </button>
 
